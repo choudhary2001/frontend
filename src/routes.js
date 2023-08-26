@@ -1,51 +1,21 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-/** 
-  All of the routes for the Soft UI Dashboard React are added here,
-  You can add a new route, customize the routes and delete the routes here.
-
-  Once you add a new route on this file it will be visible automatically on
-  the Sidenav.
-
-  For adding a new route you can follow the existing routes in the routes array.
-  1. The `type` key with the `collapse` value is used for a route.
-  2. The `type` key with the `title` value is used for a title inside the Sidenav. 
-  3. The `type` key with the `divider` value is used for a divider between Sidenav items.
-  4. The `name` key is used for the name of the route on the Sidenav.
-  5. The `key` key is used for the key of the route (It will help you with the key prop inside a loop).
-  6. The `icon` key is used for the icon of the route on the Sidenav, you have to add a node.
-  7. The `collapse` key is used for making a collapsible item on the Sidenav that has other routes
-  inside (nested routes), you need to pass the nested routes inside an array as a value for the `collapse` key.
-  8. The `route` key is used to store the route location which is used for the react router.
-  9. The `href` key is used to store the external links location.
-  10. The `title` key is only for the item with the type of `title` and its used for the title text on the Sidenav.
-  10. The `component` key is used to store the component of its route.
-*/
-
-// Soft UI Dashboard React layouts
 import Dashboard from "layouts/dashboard";
+import Maintenance from "layouts/maintenance";
 import Tables from "layouts/tables";
 import Billing from "layouts/billing";
 import VirtualReality from "layouts/virtual-reality";
 import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
+import SiteMap from "layouts/sitemaps";
+import Local_Link from "layouts/local_link";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
-
-// Soft UI Dashboard React icons
+import Units from "layouts/units";
+import Calendar from "layouts/Calendar";
+import Library from "layouts/library";
+import Reservations from "layouts/reservations";
+import PetRegistry from "layouts/petregistry";
+// HG Pro icons
 import Shop from "examples/Icons/Shop";
 import Office from "examples/Icons/Office";
 import Settings from "examples/Icons/Settings";
@@ -55,6 +25,8 @@ import CustomerSupport from "examples/Icons/CustomerSupport";
 import CreditCard from "examples/Icons/CreditCard";
 import Cube from "examples/Icons/Cube";
 
+
+
 const routes = [
   {
     type: "collapse",
@@ -62,73 +34,286 @@ const routes = [
     key: "dashboard",
     route: "/dashboard",
     icon: <Shop size="12px" />,
-    component: <Dashboard />,
+    component: <SiteMap />,
     noCollapse: true,
+    children : [
+      {
+        type: "item",
+        name: "Site Map",
+        key: "Site Map",
+        route: "/sitemap",
+        icon: <Shop size="12px" />,
+        component: <SiteMap />,
+        
+      },
+      {
+        type: "item",
+        name: "My Profile",
+        key: "My Profile",
+        route: "/profile",
+        icon: <CustomerSupport size="12px" />,
+        component: <Profile />,
+      },
+      {
+        type: "item",
+        name: "Local Link",
+        key: "Local Link",
+        route: "/local-link",
+        icon: <CustomerSupport size="12px" />,
+        component: <Local_Link/>,
+      },
+    ]
   },
+
   {
     type: "collapse",
-    name: "Tables",
-    key: "tables",
-    route: "/tables",
-    icon: <Office size="12px" />,
-    component: <Tables />,
-    noCollapse: true,
-  },
-  {
-    type: "collapse",
-    name: "Billing",
-    key: "billing",
-    route: "/billing",
+    name: "Manage",
+    key: "manage",
+    route: "/manage",
     icon: <CreditCard size="12px" />,
-    component: <Billing />,
+    component: null,
     noCollapse: true,
+    children : [
+      {
+        type: "item",
+        name: "Units/Occupants",
+        key:"Units/Occupants",
+        route:"/units/occupants",
+        icon: <CreditCard size="12px" />,
+        component: <Units/>
+      },
+      {
+        type: "item",
+        name: "Calendar",
+        key:"Calendar",
+        route:"/calendar",
+        icon: <CreditCard size="12px" />,
+        component: <Calendar/>
+      },
+      {
+        type: "item",
+        name: "Library",
+        key:"Library",
+        route:"/library",
+        icon: <CreditCard size="12px" />,
+        component: <Library/>
+      },
+      {
+        type: "item",
+        name: "Reservations",
+        key:"Reservations",
+        route:"/reservations",
+        icon: <CreditCard size="12px" />,
+        component: <Reservations/>
+      },
+      {
+        type: "item",
+        name: "Pet Registry",
+        key:"Pet Registry",
+        route:"/pet/registry",
+        icon: <CreditCard size="12px" />,
+        component: <PetRegistry/>
+      },
+    ]
+
   },
   {
     type: "collapse",
-    name: "Virtual Reality",
-    key: "virtual-reality",
-    route: "/virtual-reality",
+    name: "Front Desk",
+    key: "front-desk",
+    route: "/front-desk",
     icon: <Cube size="12px" />,
-    component: <VirtualReality />,
+    component: null,
     noCollapse: true,
+    children : [
+      {
+        type: "item",
+        name: "Event Log",
+        key:"Event Log",
+        route:"/event/log",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Instructions",
+        key:"Instructions",
+        route:"/instructions",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Incident Reports",
+        key:"Incident Reports",
+        route:"/incident/reports",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Resident Directory",
+        key:"Resident Directory",
+        route:"/resident/directory",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+    ]
+
   },
   {
     type: "collapse",
-    name: "RTL",
-    key: "rtl",
-    route: "/rtl",
+    name: "Maintenance",
+    key: "Maintenance",
+    route: "/maintenance",
     icon: <Settings size="12px" />,
-    component: <RTL />,
-    noCollapse: true,
+    component: <Maintenance />,
+    Collapse: true,
+    children : [
+      {
+        type: "item",
+        name: "New Request",
+        key:"New Request",
+        route:"/maintenance/new/request",
+        icon: <CreditCard size="12px" />,
+        component: <Maintenance />
+      },
+      {
+        type: "item",
+        name: "Search Requests",
+        key:"Search Requests",
+        route:"/maintenance/search/requests",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Incident Reports",
+        key:"Incident Reports",
+        route:"/maintenance/vendor/directory",
+        icon: <CreditCard size="12px" />,
+        component: <Tables />
+      },
+    ]
+
   },
-  { type: "title", title: "Account Pages", key: "account-pages" },
+
   {
     type: "collapse",
-    name: "Profile",
-    key: "profile",
-    route: "/profile",
+    name: "Communicate",
+    key: "communicate",
+    route: "/communicate",
+    icon: <Office size="12px" />,
+    component: null,
+    noCollapse: true,
+    children : [
+      {
+        type: "item",
+        name: "Send Email",
+        key:"Send Email",
+        route:"/communicate/send/email",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Library",
+        key:"Library",
+        route:"/communicate/library",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Public Display",
+        key:"Public Display",
+        route:"/communicate/public/display",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Resident Directory",
+        key:"Resident Directory",
+        route:"/communicate/resident/directory",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Building Directory",
+        key:"Building Directory",
+        route:"/communicate/building/directory",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+    ]
+
+  },
+  {
+    type: "collapse",
+    name: "Resident Site",
+    key: "resident-site",
+    route: "/resident-site",
+    icon: <Settings size="12px" />,
+    component: null,
+    noCollapse: true,
+    children : [
+      {
+        type: "item",
+        name: "Local Businesses",
+        key:"Local Businesses",
+        route:"/maintenance/local/businesses",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Offers & Services",
+        key:"Offers & Services",
+        route:"/maintenance/offers/services",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+      {
+        type: "item",
+        name: "Pet Park",
+        key:"Pet Park",
+        route:"/maintenance/pet/park",
+        icon: <CreditCard size="12px" />,
+        component: null
+      },
+    ]
+
+  },
+  {
+    type: "collapse",
+    name: "Other",
+    key: "Other",
+    route: "/other",
     icon: <CustomerSupport size="12px" />,
-    component: <Profile />,
+    component: null,
     noCollapse: true,
+    children : [
+      {
+        type: "item",
+        name: "Know Your Residents",
+        key:"Know Your Residents",
+        route:"/maintenance/know-your-residents",
+        icon: <CreditCard size="12px" />,
+        component: null,
+      },
+      {
+        type: "item",
+        name: "Resident Id Verify",
+        key:"Resident Id Verify",
+        route:"/maintenance/resident-id-verify",
+        icon: <CreditCard size="12px" />,
+        component: null,
+      },
+    ]
   },
-  {
-    type: "collapse",
-    name: "Sign In",
-    key: "sign-in",
-    route: "/authentication/sign-in",
-    icon: <Document size="12px" />,
-    component: <SignIn />,
-    noCollapse: true,
-  },
-  {
-    type: "collapse",
-    name: "Sign Up",
-    key: "sign-up",
-    route: "/authentication/sign-up",
-    icon: <SpaceShip size="12px" />,
-    component: <SignUp />,
-    noCollapse: true,
-  },
+
 ];
 
 export default routes;

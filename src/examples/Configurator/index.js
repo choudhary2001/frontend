@@ -1,19 +1,4 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 
 // @mui material components
 import Divider from "@mui/material/Divider";
@@ -26,15 +11,23 @@ import Icon from "@mui/material/Icon";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
-// Soft UI Dashboard React components
+import swal from 'sweetalert2';
+
+// HG Pro components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftButton from "components/SoftButton";
-
+import EditFormPopup from "./AddQuery";
+import AuthContext from "context/AuthContext";
+import refreshAccessToken from 'adminRefresToken';
 // Custom styles for the Configurator
 import ConfiguratorRoot from "examples/Configurator/ConfiguratorRoot";
 
-// Soft UI Dashboard React context
+import 'layouts/manager/property/AddUser.css'
+import SupportPopup from './PopUp';
+import './PopUp.css'
+
+// HG Pro context
 import {
   useSoftUIController,
   setOpenConfigurator,
@@ -47,7 +40,104 @@ function Configurator() {
   const [controller, dispatch] = useSoftUIController();
   const { openConfigurator, transparentSidenav, fixedNavbar, sidenavColor } = controller;
   const [disabled, setDisabled] = useState(false);
-  const sidenavColors = ["primary", "dark", "info", "success", "warning", "error"];
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedQuery, setSelectedQuery] = useState(null);
+
+  const { adminauthTokens, authTokens, managerauthTokens, logoutUser } = useContext(AuthContext);
+
+  const selectedAuthToken = adminauthTokens || managerauthTokens || authTokens;
+
+  const [queries, setQueries] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // Fetch data from the API
+  const fetchData = async () => {
+    try {
+      const newAccessToken = await refreshAccessToken(selectedAuthToken?.refresh);
+      const response = await fetch("https://hgpro.theworkflow.nyc/support/api/view/query",
+      {
+        method : "GET",
+        headers: {
+          Authorization: `Bearer ${newAccessToken}`,
+        },
+      }
+      );
+      const data = await response.json();
+      console.log(data)
+      setQueries(data.support); // Set the fetched data in the state
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+
+  const handleDeleteQuery = async (support_id) => {
+    try {
+      const newAccessTokenn = await refreshAccessToken(selectedAuthToken?.refresh);
+      const response = await fetch(`https://hgpro.theworkflow.nyc/support/api/delete/query/${support_id}`, 
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${newAccessTokenn}`,
+        },
+      });
+
+      if (response.status === 200) {
+        console.log("Query deleted successfully!");
+        fetchData();
+        swal.fire({
+          title: "Query Deleted Successfully.",
+          icon: "success",
+          toast: true,
+          timer: 3000,
+          position: 'bottom-left',
+          timerProgressBar: true,
+          showConfirmButton: false,
+        });
+      } else {
+        console.error("Failed to deleted query.");
+        swal.fire({
+          title: "Query Deletion Failed.",
+          icon: "error",
+          toast: true,
+          timer: 3000,
+          position: 'bottom-left',
+          timerProgressBar: true,
+          showConfirmButton: false,
+        });
+      }
+    } catch (error) {
+      console.error("Error occurred while deleting query:", error);
+      swal.fire({
+        title: "An error occurred. Please try again.",
+        icon: "error",
+        toast: true,
+        timer: 3000,
+        position: 'bottom-left',
+        timerProgressBar: true,
+        showConfirmButton: false,
+      });
+    }
+  };
+  
+
+  const handlequeryClick = (Id) => {
+    // Find the selected query from the queryData array
+    const selected = queries.find((query) => query.support_id === Id);
+    console.log(selected)
+    setSelectedQuery(selected);
+  };
+
+
+  const handleClosePopup = () => {
+    setSelectedQuery(null);
+    fetchData();
+  };
+
+  const showAddQueryButton = authTokens || managerauthTokens;
 
   // Use the useEffect hook to change the button state for the sidenav type based on window size.
   useEffect(() => {
@@ -85,20 +175,33 @@ function Configurator() {
   });
 
   return (
-    <ConfiguratorRoot variant="permanent" ownerState={{ openConfigurator }}>
+    <ConfiguratorRoot variant="permanent" ownerState={{ openConfigurator }} >
+      <SupportPopup selectedQuery={selectedQuery} onClose={handleClosePopup} />
+
       <SoftBox
         display="flex"
         justifyContent="space-between"
         alignItems="baseline"
-        pt={3}
+        pt={1}
         pb={0.8}
-        px={3}
+        px={1}
       >
         <SoftBox>
-          <SoftTypography variant="h5">Soft UI Configurator</SoftTypography>
-          <SoftTypography variant="body2" color="text">
-            See our dashboard options.
-          </SoftTypography>
+          <SoftTypography variant="h5">Support</SoftTypography>
+          
+        </SoftBox>
+        <SoftBox>
+          {showAddQueryButton && (
+            <SoftButton
+              variant="outlined"
+              color="info"
+              size="small"
+              style={{ margin: "3px" }}
+              onClick={() => setIsPopupOpen(true)}
+            >
+              Add Query
+            </SoftButton>
+          )}
         </SoftBox>
 
         <Icon
@@ -115,158 +218,42 @@ function Configurator() {
           close
         </Icon>
       </SoftBox>
-
+      
       <Divider />
 
-      <SoftBox pt={1.25} pb={3} px={3}>
-        <SoftBox>
-          <SoftTypography variant="h6">Sidenav Colors</SoftTypography>
 
-          <SoftBox mb={0.5}>
-            {sidenavColors.map((color) => (
-              <IconButton
-                key={color}
-                sx={({ borders: { borderWidth }, palette: { white, dark }, transitions }) => ({
-                  width: "24px",
-                  height: "24px",
-                  padding: 0,
-                  border: `${borderWidth[1]} solid ${white.main}`,
-                  borderColor: sidenavColor === color && dark.main,
-                  transition: transitions.create("border-color", {
-                    easing: transitions.easing.sharp,
-                    duration: transitions.duration.shorter,
-                  }),
-                  backgroundImage: ({ functions: { linearGradient }, palette: { gradients } }) =>
-                    linearGradient(gradients[color].main, gradients[color].state),
-
-                  "&:not(:last-child)": {
-                    mr: 1,
-                  },
-
-                  "&:hover, &:focus, &:active": {
-                    borderColor: dark.main,
-                  },
-                })}
-                onClick={() => setSidenavColor(dispatch, color)}
-              />
-            ))}
-          </SoftBox>
-        </SoftBox>
-
-        <SoftBox mt={3} lineHeight={1}>
-          <SoftTypography variant="h6">Sidenav Type</SoftTypography>
-          <SoftTypography variant="button" color="text" fontWeight="regular">
-            Choose between 2 different sidenav types.
-          </SoftTypography>
-
-          <SoftBox
-            sx={{
-              display: "flex",
-              mt: 2,
-            }}
-          >
-            <SoftButton
-              color="info"
-              variant={transparentSidenav ? "gradient" : "outlined"}
-              onClick={handleTransparentSidenav}
-              disabled={disabled}
-              fullWidth
-              sx={{
-                mr: 1,
-                ...sidenavTypeButtonsStyles,
-              }}
-            >
-              Transparent
-            </SoftButton>
-            <SoftButton
-              color="info"
-              variant={transparentSidenav ? "outlined" : "gradient"}
-              onClick={handleWhiteSidenav}
-              disabled={disabled}
-              fullWidth
-              sx={sidenavTypeButtonsStyles}
-            >
-              White
-            </SoftButton>
-          </SoftBox>
-        </SoftBox>
-        <SoftBox mt={3} mb={2} lineHeight={1}>
-          <SoftTypography variant="h6">Navbar Fixed</SoftTypography>
-
-          <Switch checked={fixedNavbar} onChange={handleFixedNavbar} />
-        </SoftBox>
-
-        <Divider />
-
-        <SoftBox mt={3} mb={2}>
-          <SoftBox mb={2}>
-            <SoftButton
-              component={Link}
-              href="https://www.creative-tim.com/product/soft-ui-dashboard-react"
-              target="_blank"
-              rel="noreferrer"
-              color="dark"
-              variant="gradient"
-              fullWidth
-            >
-              free download
-            </SoftButton>
-          </SoftBox>
-          <SoftButton
-            component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/soft-ui-dashboard/"
-            target="_blank"
-            rel="noreferrer"
-            color="dark"
-            variant="outlined"
-            fullWidth
-          >
-            view documentation
-          </SoftButton>
-        </SoftBox>
-        <SoftBox display="flex" justifyContent="center">
-          <a
-            className="github-button"
-            href="https://github.com/creativetimofficial/soft-ui-dashboard-react"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star creativetimofficial/soft-ui-dashboard-react on GitHub"
-          >
-            Star
-          </a>
-        </SoftBox>
-        <SoftBox mt={3} textAlign="center">
-          <SoftBox mb={0.5}>
-            <SoftTypography variant="h6">Thank you for sharing!</SoftTypography>
-          </SoftBox>
-
-          <SoftBox display="flex" justifyContent="center">
-            <SoftBox mr={1.5}>
-              <SoftButton
-                component={Link}
-                href="//twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20React%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23react%23mui&url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-react"
-                target="_blank"
-                rel="noreferrer"
-                color="dark"
-              >
-                <TwitterIcon />
-                &nbsp; Tweet
-              </SoftButton>
+      <SoftBox pt={1.25} pb={1} px={1}>
+        {/* Render the fetched data */}
+        {queries.map((query) => (
+          <>
+          <SoftBox key={query.support_id} style={{display:"flex", justifyContent:"space-between"}}>
+            <SoftBox  onClick={() => handlequeryClick(query.support_id)} style={{cursor:"pointer"}}
+                  onClose={handleClosePopup}>
+              <SoftTypography variant="subtitle1" style={{fontSize:"15px"}}>{query.name.slice(0, 33)}<span style={{fontSize:"10px", marginLeft:"10px", top:"0", position:"relative", backgroundColor: query.status === "Deleted" ? "red" : "green", padding:"5px", borderRadius:"15px", color:"white"}}>{query.status}</span></SoftTypography>
+              <SoftTypography variant="body2" style={{fontSize:"15px"}}>{query.joined_date}</SoftTypography>
             </SoftBox>
-            <SoftButton
-              component={Link}
-              href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-react"
-              target="_blank"
-              rel="noreferrer"
-              color="dark"
-            >
-              <FacebookIcon />
-              &nbsp; Share
-            </SoftButton>
+
+            <SoftBox>
+             
+               <Icon style={{cursor:"pointer", color:"red"}} onClick={() => handleDeleteQuery(query.support_id)}>delete</Icon>
+              
+            </SoftBox>
           </SoftBox>
-        </SoftBox>
+          <Divider />
+          </>
+        ))}
       </SoftBox>
+      {isPopupOpen && (
+        <EditFormPopup
+          onClose={() => 
+            {
+              setIsPopupOpen(false);
+              fetchData();
+            }}
+
+          // onSave={handleSave}
+        />
+      )}
     </ConfiguratorRoot>
   );
 }

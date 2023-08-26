@@ -1,12 +1,12 @@
 /**
 =========================================================
-* Soft UI Dashboard React - v4.0.0
+* HG Pro - v4.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://hgpro.theworkflow.nyc/
+* Copyright 2022 HG Pro (https://hgpro.theworkflow.nyc)
 
-Coded by www.creative-tim.com
+Coded by hgpro.theworkflow.nyc
 
  =========================================================
 
@@ -23,7 +23,7 @@ import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 
-// Soft UI Dashboard React components
+// HG Pro components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftBadge from "components/SoftBadge";

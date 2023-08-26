@@ -1,14 +1,14 @@
 /**
 =========================================================
-* Soft UI Dashboard React - v4.0.0
+* HG Pro - v4.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://hgpro.theworkflow.nyc/
+* Copyright 2022 HG Pro (https://hgpro.theworkflow.nyc)
 
-Coded by www.creative-tim.com
+Coded by hgpro.theworkflow.nyc
 
- =========================================================
+=========================================================
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
@@ -24,7 +24,7 @@ import SoftInputWithIconRoot from "components/SoftInput/SoftInputWithIconRoot";
 import SoftInputIconBoxRoot from "components/SoftInput/SoftInputIconBoxRoot";
 import SoftInputIconRoot from "components/SoftInput/SoftInputIconRoot";
 
-// Soft UI Dashboard React contexts
+// HG Pro contexts
 import { useSoftUIController } from "context";
 
 const SoftInput = forwardRef(({ size, icon, error, success, disabled, ...rest }, ref) => {

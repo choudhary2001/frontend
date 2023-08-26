@@ -1,19 +1,4 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 // react-router components
 import { useLocation, Link } from "react-router-dom";
@@ -28,14 +13,15 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import Icon from "@mui/material/Icon";
 
-// Soft UI Dashboard React components
+// HG Pro components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftInput from "components/SoftInput";
 
-// Soft UI Dashboard React examples
+// HG Pro examples
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
+import AuthContext from 'context/AuthContext'
 
 // Custom styles for DashboardNavbar
 import {
@@ -46,12 +32,13 @@ import {
   navbarMobileMenu,
 } from "examples/Navbars/DashboardNavbar/styles";
 
-// Soft UI Dashboard React context
+// HG Pro context
 import {
   useSoftUIController,
   setTransparentNavbar,
   setMiniSidenav,
   setOpenConfigurator,
+  setOpenShiftLog
 } from "context";
 
 // Images
@@ -61,9 +48,13 @@ import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useSoftUIController();
-  const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator } = controller;
+  const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator, openShiftLog } = controller;
   const [openMenu, setOpenMenu] = useState(false);
   const route = useLocation().pathname.split("/").slice(1);
+
+  const { adminauthTokens, authTokens, managerauthTokens, logoutUser } = useContext(AuthContext);
+
+
 
   useEffect(() => {
     // Setting the navbar type
@@ -92,7 +83,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
   }, [dispatch, fixedNavbar]);
 
   const handleMiniSidenav = () => setMiniSidenav(dispatch, !miniSidenav);
-  const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
+  const handleConfiguratorOpen = () => setOpenShiftLog(dispatch, !openShiftLog);
+  const handleConfiguratorOpenSupport = () => setOpenConfigurator(dispatch, !openConfigurator);
   const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
   const handleCloseMenu = () => setOpenMenu(false);
 
@@ -135,6 +127,9 @@ function DashboardNavbar({ absolute, light, isMini }) {
     </Menu>
   );
 
+  const showAddQueryButton = authTokens || managerauthTokens;
+
+
   return (
     <AppBar
       position={absolute ? "absolute" : navbarType}
@@ -154,7 +149,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
               />
             </SoftBox>
             <SoftBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in">
+              <Link onClick={logoutUser} to="/authentication/sign-in">
                 <IconButton sx={navbarIconButton} size="small">
                   <Icon
                     sx={({ palette: { dark, white } }) => ({
@@ -168,7 +163,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                     fontWeight="medium"
                     color={light ? "white" : "dark"}
                   >
-                    Sign in
+                    <a style={{ cursor: "pointer" }}>Logout</a>
                   </SoftTypography>
                 </IconButton>
               </Link>
@@ -186,9 +181,30 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 size="small"
                 color="inherit"
                 sx={navbarIconButton}
-                onClick={handleConfiguratorOpen}
+                // onClick={handleConfiguratorOpen}
+                title="Comming Soon"
               >
                 <Icon>settings</Icon>
+              </IconButton>
+              {showAddQueryButton && (
+              <IconButton
+                size="small"
+                color="inherit"
+                sx={navbarIconButton}
+                onClick={handleConfiguratorOpen}
+                title="Shift Log"
+              >
+                <Icon>book</Icon>
+              </IconButton>
+              )}
+
+              <IconButton
+                size="small"
+                color="inherit"
+                sx={navbarIconButton}
+                onClick={handleConfiguratorOpenSupport}
+              >
+                <Icon>support_agent</Icon>
               </IconButton>
               <IconButton
                 size="small"
@@ -202,6 +218,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
               </IconButton>
               {renderMenu()}
+
             </SoftBox>
           </SoftBox>
         )}

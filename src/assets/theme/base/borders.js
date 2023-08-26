@@ -1,12 +1,12 @@
 /**
 =========================================================
-* Soft UI Dashboard React - v3.1.0
+* HG Pro - v3.1.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-pro-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://hgpro.theworkflow.nyc/product/soft-ui-dashboard-pro-react
+* Copyright 2022 HG Pro (https://hgpro.theworkflow.nyc)
 
-Coded by www.creative-tim.com
+Coded by hgpro.theworkflow.nyc
 
  =========================================================
 
@@ -14,15 +14,15 @@ Coded by www.creative-tim.com
 */
 
 /**
- * The base border styles for the Soft UI Dashboard React.
+ * The base border styles for the HG Pro.
  * You can add new border width, border color or border radius using this file.
- * You can customized the borders value for the entire Soft UI Dashboard React using thie file.
+ * You can customized the borders value for the entire HG Pro using thie file.
  */
 
-// Soft UI Dashboard React Base Styles
+// HG Pro Base Styles
 import colors from "assets/theme/base/colors";
 
-// Soft UI Dashboard React Helper Functions
+// HG Pro Helper Functions
 import pxToRem from "assets/theme/functions/pxToRem";
 
 const { grey } = colors;

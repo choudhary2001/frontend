@@ -1,17 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 // @mui material components
 import Grid from "@mui/material/Grid";
@@ -22,21 +8,24 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
-// Soft UI Dashboard React components
+// HG Pro components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
-// Soft UI Dashboard React examples
+// HG Pro examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import Footer from "examples/Footer";
 import ProfileInfoCard from "examples/Cards/InfoCards/ProfileInfoCard";
 import ProfilesList from "examples/Lists/ProfilesList";
 import DefaultProjectCard from "examples/Cards/ProjectCards/DefaultProjectCard";
 import PlaceholderCard from "examples/Cards/PlaceholderCard";
+import SoftButton from "components/SoftButton";
+import EditFormPopup from "layouts/profile/components/EditFormPopup";
 
 // Overview page components
 import Header from "layouts/profile/components/Header";
 import PlatformSettings from "layouts/profile/components/PlatformSettings";
+import { useState, useRef } from "react";
 
 // Data
 import profilesListData from "layouts/profile/data/profilesListData";
@@ -51,50 +40,148 @@ import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
 
 function Overview() {
+  const headers = {
+    'X-CSRFToken': window.csrfToken
+  };
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
+
+
     <DashboardLayout>
       <Header />
       <SoftBox mt={5} mb={3}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6} xl={4}>
+          {/* <Grid item xs={12} md={6} xl={4}>
             <PlatformSettings />
-          </Grid>
-          <Grid item xs={12} md={6} xl={4}>
-            <ProfileInfoCard
-              title="profile information"
-              description="Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
-              info={{
-                fullName: "Alec M. Thompson",
-                mobile: "(44) 123 1234 123",
-                email: "alecthompson@mail.com",
-                location: "USA",
-              }}
-              social={[
-                {
-                  link: "https://www.facebook.com/CreativeTim/",
-                  icon: <FacebookIcon />,
-                  color: "facebook",
-                },
-                {
-                  link: "https://twitter.com/creativetim",
-                  icon: <TwitterIcon />,
-                  color: "twitter",
-                },
-                {
-                  link: "https://www.instagram.com/creativetimofficial/",
-                  icon: <InstagramIcon />,
-                  color: "instagram",
-                },
-              ]}
-              action={{ route: "", tooltip: "Edit Profile" }}
-            />
-          </Grid>
-          <Grid item xs={12} xl={4}>
-            <ProfilesList title="conversations" profiles={profilesListData} />
+          </Grid> */}
+          <Grid item xs={12} md={12} xl={12}>
+            <Card>
+                <div style={{padding:"15px"}}>
+                  <div>
+                    <h4 style={{display:"inline-block"}}>Profile Information</h4>
+                    <SoftButton style={{float:"right", border:"none", }}
+                      variant="gradient"
+                      color="dark"
+                      type="submit"
+                      small
+                      onClick={() => setIsPopupOpen(true)} 
+                    >
+                      Edit
+                    </SoftButton>
+                  </div>
+                  <div>
+                    <SoftTypography
+                      variant="button"
+                      fontWeight="regular"
+                      textGradient
+                    >
+                      User Name : Psamuel269 &nbsp;
+                    </SoftTypography>
+                  </div>
+                  <div>
+                    <SoftTypography
+                      variant="button"
+                      fontWeight="regular"
+                      textGradient
+                    >
+                      Password : ******* &nbsp;
+                    </SoftTypography>
+                  </div>
+                  <div>
+                    <SoftTypography
+                      variant="button"
+                      fontWeight="regular"
+                      textGradient
+                    >
+                      Email Address :   mrpraticksamuel@gmail.com &nbsp;
+                    </SoftTypography>
+                    </div>
+                    <div>
+                    <SoftTypography
+                      variant="button"
+                      fontWeight="regular"
+                      textGradient
+                    >
+                      Home Phone :  12345678990 &nbsp;
+                    </SoftTypography>
+                    </div>
+                    <div>
+                      <SoftTypography
+                        variant="button"
+                        fontWeight="regular"
+                        textGradient
+                      >
+                        Cell Phone :  12345678990 &nbsp;
+                      </SoftTypography>
+                    </div>
+                    <div>
+                      <SoftTypography
+                        variant="button"
+                        fontWeight="regular"
+                        textGradient
+                      >
+                        Address :   Paghari, baheri, darbhanga &nbsp;
+                      </SoftTypography>
+                    </div>
+                    <div>
+                      <SoftTypography
+                        variant="button"
+                        fontWeight="regular"
+                        textGradient
+                      >
+                        Street Address :  Paghari, Baheri &nbsp;
+                      </SoftTypography>
+                    </div>
+                    <div>
+                      <SoftTypography
+                        variant="button"
+                        fontWeight="regular"
+                        textGradient
+                      >
+                        City :   Darbhanga &nbsp;
+                      </SoftTypography>
+                    </div>
+                    <div>
+                      <SoftTypography
+                        variant="button"
+                        fontWeight="regular"
+                        textGradient
+                      >
+                        State : Bihar &nbsp;
+                      </SoftTypography>
+                    </div>
+                    <div>
+                      <SoftTypography
+                        variant="button"
+                        fontWeight="regular"
+                        textGradient
+                      >
+                        Zip  Code : 123456 &nbsp;
+                      </SoftTypography>
+                    </div>
+                    <div>
+                      <SoftTypography
+                        variant="button"
+                        fontWeight="regular"
+                        textGradient
+                      >
+                        Emergency  Phone : 12345678990 &nbsp;
+                      </SoftTypography>
+                    </div>
+                </div>
+            </Card>
+
+            {isPopupOpen && (
+              <EditFormPopup
+                onClose={() => setIsPopupOpen(false)} // Close the popup form
+                  // Pass any required props to the popup form component
+                />
+            )}
+
           </Grid>
         </Grid>
       </SoftBox>
-      <SoftBox mb={3}>
+      {/* <SoftBox mb={3}>
         <Card>
           <SoftBox pt={2} px={2}>
             <SoftBox mb={0.5}>
@@ -129,7 +216,7 @@ function Overview() {
                     { image: team4, name: "Peterson" },
                   ]}
                 />
-              </Grid>
+              </Grid> 
               <Grid item xs={12} md={6} xl={3}>
                 <DefaultProjectCard
                   image={homeDecor2}
@@ -176,7 +263,7 @@ function Overview() {
             </Grid>
           </SoftBox>
         </Card>
-      </SoftBox>
+      </SoftBox> */}
 
       <Footer />
     </DashboardLayout>

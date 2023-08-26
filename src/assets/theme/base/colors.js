@@ -1,12 +1,12 @@
 /**
 =========================================================
-* Soft UI Dashboard React - v3.1.0
+* HG Pro - v3.1.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-pro-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://hgpro.theworkflow.nyc/product/soft-ui-dashboard-pro-react
+* Copyright 2022 HG Pro (https://hgpro.theworkflow.nyc)
 
-Coded by www.creative-tim.com
+Coded by hgpro.theworkflow.nyc
 
  =========================================================
 
@@ -14,9 +14,9 @@ Coded by www.creative-tim.com
 */
 
 /**
- * The base colors for the Soft UI Dashboard React.
+ * The base colors for the HG Pro.
  * You can add new color using this file.
- * You can customized the colors for the entire Soft UI Dashboard React using thie file.
+ * You can customized the colors for the entire HG Pro using thie file.
  */
 
 const colors = {

@@ -1,30 +1,17 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 // @mui material components
 import Card from "@mui/material/Card";
 
-// Soft UI Dashboard React components
+// HG Pro components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
-// Soft UI Dashboard React examples
+// HG Pro examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import Table from "examples/Tables/Table";
+import SoftButton from "components/SoftButton";
+import Checkbox from "@mui/material/Checkbox";
 
 // Data
 import authorsTableData from "layouts/tables/data/authorsTableData";
@@ -32,7 +19,6 @@ import projectsTableData from "layouts/tables/data/projectsTableData";
 
 function Tables() {
   const { columns, rows } = authorsTableData;
-  const { columns: prCols, rows: prRows } = projectsTableData;
 
   return (
     <DashboardLayout>
@@ -40,40 +26,71 @@ function Tables() {
       <SoftBox py={3}>
         <SoftBox mb={3}>
           <Card>
-            <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">Authors table</SoftTypography>
+            <SoftBox display="flex" justifyContent="space-between" alignItems="center" flexWrap = "wrap" p={1}  style={{borderBottom:"1px solid grey"}}>
+              <SoftTypography variant="h6">Vendor List - The Chamberlain</SoftTypography>
+              <SoftBox display="flex">
+                  <SoftButton variant="outlined" color="info" size="small" style={{margin : "3px"}} >
+                    Export to Excel
+                  </SoftButton>
+                  <SoftButton variant="outlined" color="info" size="small" style={{margin : "3px"}} >
+                    + Add More Vendors from Master List
+                  </SoftButton>
+              </SoftBox>
+              
+            </SoftBox>
+            <SoftBox display="flex" alignItems="center" flexWrap="wrap" p={1} style={{borderBottom:"1px solid grey"}}>
+              <SoftTypography variant="h6">Options</SoftTypography> &nbsp; &nbsp; &nbsp;
+              <SoftBox display="flex">
+                <Checkbox/>
+                  <SoftTypography
+                      variant="button"
+                      fontWeight="bold"
+                      textGradient
+                    >
+                      Show Category Column &nbsp;
+                    </SoftTypography>
+                </SoftBox>
+              <SoftBox display="flex">
+
+                <Checkbox/>
+                <SoftTypography
+                      variant="button"
+                      fontWeight="bold"
+                      textGradient
+                    >
+                      Show Compliance Column &nbsp;
+                </SoftTypography>
+              </SoftBox>
+              <SoftBox display="flex">
+
+                  <Checkbox/>
+                  <SoftTypography
+                      variant="button"
+                      fontWeight="bold"
+                      textGradient
+                    >
+                      Show Notes &nbsp;
+                    </SoftTypography>
+              </SoftBox>
+              
             </SoftBox>
             <SoftBox
               sx={{
-                "& .MuiTableRow-root:not(:last-child)": {
+                "& .MuiTableRow-root": {
                   "& td": {
                     borderBottom: ({ borders: { borderWidth, borderColor } }) =>
+                      `${borderWidth[1]} solid ${borderColor}`,
+                    border: ({ borders: { borderWidth, borderColor } }) =>
                       `${borderWidth[1]} solid ${borderColor}`,
                   },
                 },
               }}
             >
-              <Table columns={columns} rows={rows} />
+              <Table columns={columns} rows={rows} borders={1} />
             </SoftBox>
           </Card>
         </SoftBox>
-        <Card>
-          <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-            <SoftTypography variant="h6">Projects table</SoftTypography>
-          </SoftBox>
-          <SoftBox
-            sx={{
-              "& .MuiTableRow-root:not(:last-child)": {
-                "& td": {
-                  borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                    `${borderWidth[1]} solid ${borderColor}`,
-                },
-              },
-            }}
-          >
-            <Table columns={prCols} rows={prRows} />
-          </SoftBox>
-        </Card>
+        
       </SoftBox>
       <Footer />
     </DashboardLayout>

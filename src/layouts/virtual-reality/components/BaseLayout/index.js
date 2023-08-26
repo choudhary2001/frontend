@@ -1,12 +1,12 @@
 /**
 =========================================================
-* Soft UI Dashboard React - v4.0.0
+* HG Pro - v4.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://hgpro.theworkflow.nyc/
+* Copyright 2022 HG Pro (https://hgpro.theworkflow.nyc)
 
-Coded by www.creative-tim.com
+Coded by hgpro.theworkflow.nyc
 
  =========================================================
 
@@ -21,19 +21,19 @@ import { useLocation } from "react-router-dom";
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
-// Soft UI Dashboard React components
+// HG Pro components
 import SoftBox from "components/SoftBox";
 
-// Soft UI Dashboard React examples
+// HG Pro examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
 import Sidenav from "examples/Sidenav";
 
-// Soft UI Dashboard React context
+// HG Pro context
 import { useSoftUIController, setMiniSidenav, setLayout, setTransparentSidenav } from "context";
 
-// Soft UI Dashboard React routes
+// HG Pro routes
 import routes from "routes";
 
 // Custom styles for the BaseLayout

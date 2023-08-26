@@ -1,22 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-/**
-  This file is used for controlling the global states of the components,
-  you can customize the states for the different components here.
-*/
 
 import { createContext, useContext, useReducer, useMemo } from "react";
 
@@ -27,9 +8,9 @@ import PropTypes from "prop-types";
 const SoftUI = createContext(null);
 
 // Setting custom name for the context which is visible on react dev tools
-SoftUI.displayName = "SoftUIContext";
+SoftUI.displayName = "HGPro";
 
-// Soft UI Dashboard React reducer
+// HG Pro reducer
 function reducer(state, action) {
   switch (action.type) {
     case "MINI_SIDENAV": {
@@ -50,11 +31,17 @@ function reducer(state, action) {
     case "OPEN_CONFIGURATOR": {
       return { ...state, openConfigurator: action.value };
     }
+    case "OPEN_SHIFT_LOG": {
+      return { ...state, openShiftLog: action.value };
+    }
     case "DIRECTION": {
       return { ...state, direction: action.value };
     }
     case "LAYOUT": {
       return { ...state, layout: action.value };
+    }
+    case 'SET_SELECTED_PROPERTY': {
+      return { ...state, selectedPropertyId: action.value };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -62,7 +49,7 @@ function reducer(state, action) {
   }
 }
 
-// Soft UI Dashboard React context provider
+// HG Pro context provider
 function SoftUIControllerProvider({ children }) {
   const initialState = {
     miniSidenav: false,
@@ -71,8 +58,10 @@ function SoftUIControllerProvider({ children }) {
     transparentNavbar: true,
     fixedNavbar: true,
     openConfigurator: false,
+    openShiftLog : false,
     direction: "ltr",
     layout: "dashboard",
+    selectedPropertyId: null,
   };
 
   const [controller, dispatch] = useReducer(reducer, initialState);
@@ -82,7 +71,7 @@ function SoftUIControllerProvider({ children }) {
   return <SoftUI.Provider value={value}>{children}</SoftUI.Provider>;
 }
 
-// Soft UI Dashboard React custom hook for using context
+// HG Pro custom hook for using context
 function useSoftUIController() {
   const context = useContext(SoftUI);
 
@@ -105,8 +94,10 @@ const setSidenavColor = (dispatch, value) => dispatch({ type: "SIDENAV_COLOR", v
 const setTransparentNavbar = (dispatch, value) => dispatch({ type: "TRANSPARENT_NAVBAR", value });
 const setFixedNavbar = (dispatch, value) => dispatch({ type: "FIXED_NAVBAR", value });
 const setOpenConfigurator = (dispatch, value) => dispatch({ type: "OPEN_CONFIGURATOR", value });
+const setOpenShiftLog = (dispatch, value) => dispatch({ type: "OPEN_SHIFT_LOG", value });
 const setDirection = (dispatch, value) => dispatch({ type: "DIRECTION", value });
 const setLayout = (dispatch, value) => dispatch({ type: "LAYOUT", value });
+const setselectedPropertyId = (dispatch, value) => dispatch({ type: "SET_SELECTED_PROPERTY", value });
 
 export {
   SoftUIControllerProvider,
@@ -117,6 +108,8 @@ export {
   setTransparentNavbar,
   setFixedNavbar,
   setOpenConfigurator,
+  setOpenShiftLog,
   setDirection,
   setLayout,
+  setselectedPropertyId,
 };

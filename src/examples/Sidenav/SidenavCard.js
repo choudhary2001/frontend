@@ -1,12 +1,12 @@
 /**
 =========================================================
-* Soft UI Dashboard React - v4.0.0
+* HG Pro - v4.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://hgpro.theworkflow.nyc/
+* Copyright 2022 HG Pro (https://hgpro.theworkflow.nyc)
 
-Coded by www.creative-tim.com
+Coded by hgpro.theworkflow.nyc
 
  =========================================================
 
@@ -19,7 +19,7 @@ import CardContent from "@mui/material/CardContent";
 import Icon from "@mui/material/Icon";
 import Link from "@mui/material/Link";
 
-// Soft UI Dashboard React components
+// HG Pro components
 import SoftButton from "components/SoftButton";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
@@ -27,7 +27,7 @@ import SoftTypography from "components/SoftTypography";
 // Custom styles for the SidenavCard
 import { card, cardContent, cardIconBox, cardIcon } from "examples/Sidenav/styles/sidenavCard";
 
-// Soft UI Dashboard React context
+// HG Pro context
 import { useSoftUIController } from "context";
 
 function SidenavCard() {
@@ -61,7 +61,7 @@ function SidenavCard() {
           </SoftBox>
           <SoftButton
             component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/soft-ui-dashboard/"
+            href="https://theworkflow.nyc/"
             target="_blank"
             rel="noreferrer"
             size="small"

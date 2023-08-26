@@ -1,17 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -20,11 +6,11 @@ import PropTypes from "prop-types";
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
 
-// Soft UI Dashboard React components
+// HGPro React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
-// Soft UI Dashboard React base styles
+// HGPro React base styles
 import typography from "assets/theme/base/typography";
 
 function Footer({ company, links }) {
@@ -34,7 +20,7 @@ function Footer({ company, links }) {
   const renderLinks = () =>
     links.map((link) => (
       <SoftBox key={link.name} component="li" px={2} lineHeight={1}>
-        <Link href={link.href} target="_blank">
+        <Link href={link.href} >
           <SoftTypography variant="button" fontWeight="regular" color="text">
             {link.name}
           </SoftTypography>
@@ -44,6 +30,7 @@ function Footer({ company, links }) {
 
   return (
     <SoftBox
+      margin="10px"
       width="100%"
       display="flex"
       flexDirection={{ xs: "column", lg: "row" }}
@@ -60,19 +47,8 @@ function Footer({ company, links }) {
         fontSize={size.sm}
         px={1.5}
       >
-        &copy; {new Date().getFullYear()}, made with
-        <SoftBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon color="inherit" fontSize="inherit">
-            favorite
-          </Icon>
-        </SoftBox>
-        by
-        <Link href={href} target="_blank">
-          <SoftTypography variant="button" fontWeight="medium">
-            &nbsp;{name}&nbsp;
-          </SoftTypography>
-        </Link>
-        for a better web.
+        &copy; {new Date().getFullYear()} HGPro
+        
       </SoftBox>
       <SoftBox
         component="ul"
@@ -99,12 +75,12 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "https://www.creative-tim.com/", name: "Creative Tim" },
+  company: { href: "#", name: "HGPro" },
   links: [
-    { href: "https://www.creative-tim.com/", name: "Creative Tim" },
-    { href: "https://www.creative-tim.com/presentation", name: "About Us" },
-    { href: "https://www.creative-tim.com/blog", name: "Blog" },
-    { href: "https://www.creative-tim.com/license", name: "License" },
+    { href: "#", name: "HGPro" },
+    { href: "#", name: "About Us" },
+    { href: "#", name: "Blog" },
+    { href: "#", name: "License" },
   ],
 };
 

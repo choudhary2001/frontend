@@ -1,9 +1,9 @@
 {
   "name": "soft-ui-dashboard-react",
   "version": "4.0.0",
-  "author": "Creative Tim",
-  "license": "SEE LICENSE IN <https://www.creative-tim.com/license>",
-  "description": "ReactJS version of Soft UI Dashboard by Creative Tim",
+  "author": "HG Pro",
+  "license": "SEE LICENSE IN <https://hgpro.theworkflow.nyc/license>",
+  "description": "ReactJS version of Soft UI Dashboard by HG Pro",
   "bugs": {
     "url": "https://github.com/creativetimofficial/soft-ui-dashboard-react/issues"
   },
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/creativetimofficial/soft-ui-dashboard-react.git"
   },
   "engines": {
-    "node": "14 || 15 || 16",
+    "node": "10 || 11 || 12 || 13 || 14 || 15 || 16",
     "npm": ">=6"
   },
   "dependencies": {
@@ -25,18 +25,25 @@
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.3.0",
     "@testing-library/user-event": "14.2.1",
+    "axios": "^1.4.0",
     "chart.js": "3.4.1",
     "chroma-js": "2.4.2",
+    "jwt-decode": "^3.1.2",
     "prop-types": "15.8.1",
     "react": "18.2.0",
+    "react-calendar": "^4.2.1",
     "react-chartjs-2": "3.0.4",
     "react-countup": "6.3.0",
     "react-dom": "18.2.0",
     "react-flatpickr": "3.10.13",
-    "react-router-dom": "6.3.0",
-    "react-scripts": "5.0.1",
+    "react-google-login": "^5.2.2",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.11.2",
+    "react-scripts": "^5.0.1",
+    "redux": "^4.2.1",
     "stylis": "4.1.1",
     "stylis-plugin-rtl": "2.1.1",
+    "sweetalert2": "^11.7.5",
     "uuid": "8.3.2",
     "web-vitals": "2.1.4"
   },

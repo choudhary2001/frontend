@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-// Soft UI Dashboard React components
+// HG Pro components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftAvatar from "components/SoftAvatar";
 import SoftBadge from "components/SoftBadge";
+import Icon from "@mui/material/Icon";
 
 // Images
 import team2 from "assets/images/team-2.jpg";
@@ -43,152 +44,496 @@ function Function({ job, org }) {
 
 const authorsTableData = {
   columns: [
-    { name: "author", align: "left" },
-    { name: "function", align: "left" },
-    { name: "status", align: "center" },
-    { name: "employed", align: "center" },
-    { name: "action", align: "center" },
+    { name: "name", align: "center" },
+    { name: "category", align: "center" },
+    { name: "address", align: "center" },
+    { name: "city", align: "center" },
+    { name: "state", align: "center" },
+    { name: "zip", align: "center" },
+    { name: "phone", align: "center" },
+    { name: "assign_to_maint_req", align: "center" },
+    { name: "vendor_compliance", align: "center" },
+    { name: "contact_vendor", align: "center" },
+    { name: "acctions", align: "center" },
   ],
 
   rows: [
     {
-      author: <Author image={team2} name="John Michael" email="john@creative-tim.com" />,
-      function: <Function job="Manager" org="Organization" />,
-      status: (
+      name: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium" >
+          Air Comfort
+        </SoftTypography>
+      ),
+      category: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      address: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      city: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      state: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      zip: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      phone: <Function job="Manager" org="Organization" />,
+
+       assign_to_maint_req: (
+        <Icon
+              sx={{
+                fontWeight: "bold",
+                color: ({ palette: { info } }) => info.main,
+                mt: -0.5,
+              }}
+            >
+              done
+          </Icon>
+      ),
+      
+
+       
+      vendor_compliance: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+       contact_vendor: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
-      ),
-      employed: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-          23/04/18
-        </SoftTypography>
-      ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
-        </SoftTypography>
-      ),
+        ),
+        acctions: (
+          <SoftTypography
+            component="a"
+            href="#"
+            variant="caption"
+            color="secondary"
+            fontWeight="medium"
+          >
+            Edit / View
+          </SoftTypography>
+        ),
     },
+
+
     {
-      author: <Author image={team3} name="Alexa Liras" email="alexa@creative-tim.com" />,
-      function: <Function job="Programator" org="Developer" />,
-      status: (
-        <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
-      ),
-      employed: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-          11/01/19
+      name: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          Air Comfort
         </SoftTypography>
       ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
+      category: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
         </SoftTypography>
       ),
-    },
-    {
-      author: <Author image={team4} name="Laurent Perrier" email="laurent@creative-tim.com" />,
-      function: <Function job="Executive" org="Projects" />,
-      status: (
+      address: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      city: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      state: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      zip: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      phone: <Function job="Manager" org="Organization" />,
+
+       assign_to_maint_req: (
+        <Icon
+              sx={{
+                fontWeight: "bold",
+                color: ({ palette: { info } }) => info.main,
+                mt: -0.5,
+              }}
+            >
+              done
+          </Icon>
+      ),
+      
+       
+      vendor_compliance: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+       contact_vendor: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
-      ),
-      employed: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-          19/09/17
-        </SoftTypography>
-      ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
-        </SoftTypography>
-      ),
+        ),
+        acctions: (
+          <SoftTypography
+            component="a"
+            href="#"
+            variant="caption"
+            color="secondary"
+            fontWeight="medium"
+          >
+            Edit / View
+          </SoftTypography>
+        ),
     },
+
     {
-      author: <Author image={team3} name="Michael Levi" email="michael@creative-tim.com" />,
-      function: <Function job="Programator" org="Developer" />,
-      status: (
+      name: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          Air Comfort
+        </SoftTypography>
+      ),
+      category: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      address: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      city: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      state: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      zip: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      phone: <Function job="Manager" org="Organization" />,
+
+       assign_to_maint_req: (
+        <Icon
+              sx={{
+                fontWeight: "bold",
+                color: ({ palette: { info } }) => info.main,
+                mt: -0.5,
+              }}
+            >
+              done
+          </Icon>
+      ),
+      
+       
+      vendor_compliance: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+       contact_vendor: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
-      ),
-      employed: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-          24/12/08
-        </SoftTypography>
-      ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
-        </SoftTypography>
-      ),
+        ),
+        acctions: (
+          <SoftTypography
+            component="a"
+            href="#"
+            variant="caption"
+            color="secondary"
+            fontWeight="medium"
+          >
+            Edit / View
+          </SoftTypography>
+        ),
     },
+
+
     {
-      author: <Author image={team2} name="Richard Gran" email="richard@creative-tim.com" />,
-      function: <Function job="Manager" org="Executive" />,
-      status: (
-        <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
-      ),
-      employed: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-          04/10/21
+      name: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          Air Comfort
         </SoftTypography>
       ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
+      category: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
         </SoftTypography>
       ),
+      address: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      city: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      state: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      zip: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      phone: <Function job="Manager" org="Organization" />,
+
+       assign_to_maint_req: (
+        <Icon
+              sx={{
+                fontWeight: "bold",
+                color: ({ palette: { info } }) => info.main,
+                mt: -0.5,
+              }}
+            >
+              done
+          </Icon>
+      ),
+      
+       
+      vendor_compliance: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+       contact_vendor: (
+        <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
+        ),
+        acctions: (
+          <SoftTypography
+            component="a"
+            href="#"
+            variant="caption"
+            color="secondary"
+            fontWeight="medium"
+          >
+            Edit / View
+          </SoftTypography>
+        ),
     },
+
+
     {
-      author: <Author image={team4} name="Miriam Eric" email="miriam@creative-tim.com" />,
-      function: <Function job="Programtor" org="Developer" />,
-      status: (
-        <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
-      ),
-      employed: (
-        <SoftTypography variant="caption" color="secondary" fontWeight="medium">
-          14/09/20
+      name: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          Air Comfort
         </SoftTypography>
       ),
-      action: (
-        <SoftTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="secondary"
-          fontWeight="medium"
-        >
-          Edit
+      category: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
         </SoftTypography>
       ),
+      address: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      city: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      state: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      zip: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      phone: <Function job="Manager" org="Organization" />,
+
+       assign_to_maint_req: (
+        <Icon
+              sx={{
+                fontWeight: "bold",
+                color: ({ palette: { info } }) => info.main,
+                mt: -0.5,
+              }}
+            >
+              done
+          </Icon>
+      ),
+      
+      vendor_compliance: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+       contact_vendor: (
+        <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
+        ),
+        acctions: (
+          <SoftTypography
+            component="a"
+            href="#"
+            variant="caption"
+            color="secondary"
+            fontWeight="medium"
+          >
+            Edit / View
+          </SoftTypography>
+        ),
     },
+
+
+    {
+      name: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          Air Comfort
+        </SoftTypography>
+      ),
+      category: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      address: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      city: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      state: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      zip: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      phone: <Function job="Manager" org="Organization" />,
+
+       assign_to_maint_req: (
+        <Icon
+              sx={{
+                fontWeight: "bold",
+                color: ({ palette: { info } }) => info.main,
+                mt: -0.5,
+              }}
+            >
+              done
+          </Icon>
+      ),
+      
+      vendor_compliance: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+       contact_vendor: (
+        <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
+        ),
+        acctions: (
+          <SoftTypography
+            component="a"
+            href="#"
+            variant="caption"
+            color="secondary"
+            fontWeight="medium"
+          >
+            Edit / View
+          </SoftTypography>
+        ),
+    },
+
+
+    {
+      name: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          Air Comfort
+        </SoftTypography>
+      ),
+      category: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      address: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      city: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      state: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      zip: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+      phone: <Function job="Manager" org="Organization" />,
+
+       assign_to_maint_req: (
+        <Icon
+              sx={{
+                fontWeight: "bold",
+                color: ({ palette: { info } }) => info.main,
+                mt: -0.5,
+              }}
+            >
+              done
+          </Icon>
+      ),
+      
+       
+      vendor_compliance: (
+        <SoftTypography variant="caption" color="text" fontWeight="medium">
+          working
+        </SoftTypography>
+      ),
+       contact_vendor: (
+        <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
+        ),
+        acctions: (
+          <SoftTypography
+            component="a"
+            href="#"
+            variant="caption"
+            color="secondary"
+            fontWeight="medium"
+          >
+            Edit / View
+          </SoftTypography>
+        ),
+    },
+
+
+
+
   ],
 };
 

@@ -1,0 +1,8 @@
+/* Custom CSS class with increased z-index for Swal dialog */
+.custom-swal {
+  z-index: 999999 !important; /* You can set any higher value as per your requirement */
+}
+  
+.swal2-container{
+  z-index: 999999 !important; /* You can set any higher value as per your requirement */
+}

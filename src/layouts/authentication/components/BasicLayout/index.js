@@ -1,12 +1,12 @@
 /**
 =========================================================
-* Soft UI Dashboard React - v4.0.0
+* HG Pro - v4.0.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://theworkflow.nyc/
+* Copyright 2022 HG Pro (https://theworkflow.nyc)
 
-Coded by www.creative-tim.com
+Coded by theworkflow.nyc
 
  =========================================================
 
@@ -19,11 +19,11 @@ import PropTypes from "prop-types";
 // @mui material components
 import Grid from "@mui/material/Grid";
 
-// Soft UI Dashboard React components
+// HG Pro components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
-// Soft UI Dashboard React examples
+// HG Pro examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 
@@ -35,9 +35,9 @@ function BasicLayout({ title, description, image, children }) {
     <PageLayout>
       <DefaultNavbar
         action={{
-          type: "external",
-          route: "https://creative-tim.com/product/soft-ui-dashboard-react",
-          label: "free download",
+          type: "internal",
+          route: "/authentication/sign-in",
+          label: "Sign In",
         }}
         transparent
         light
